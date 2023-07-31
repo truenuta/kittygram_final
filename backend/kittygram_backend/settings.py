@@ -55,11 +55,18 @@ WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': {
+       # бэкенд postgresql
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': os.getenv('POSTGRES_DB', 'kittygram'),
+       'USER': os.getenv('POSTGRES_USER', 'kittygram_user'),
+       'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'kittygram_password'),
+       'HOST': os.getenv('DB_HOST', ''),
+       'PORT': os.getenv('DB_PORT', 5432)
+   }
 }
+
+
 
 
 # Password validation
@@ -93,8 +100,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = BASE_DIR / "collected_static"
+
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/media'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
