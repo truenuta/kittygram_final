@@ -21,7 +21,7 @@ services:
       - static:/backend_static
       - media:/media
   frontend:
-    env_file: .envещгср
+    env_file: .env
     build: ./frontend/
     command: cp -r /app/build/. /static/
     volumes:
