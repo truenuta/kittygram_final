@@ -13,7 +13,7 @@ services:
       - pg_data:/var/lib/postgresql/data
     env_file: .env
   backend:
-    build: ./backend/
+    build: antru2305/kittygram_backend
     env_file: .env
     depends_on:
       - db
@@ -21,8 +21,8 @@ services:
       - static:/backend_static
       - media:/media
   frontend:
-    env_file: .envещгср
-    build: ./frontend/
+    env_file: .env
+    build: antru2305/kittygram_frontend
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
